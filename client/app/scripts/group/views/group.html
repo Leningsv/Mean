@@ -1,0 +1,43 @@
+<h3>Group</h3>
+<br>
+<div>
+  <br><a href="#/" class="kataFont">Home</a>
+</div>
+<div class="container">
+  <div class="form-horizontal">
+    <div class="form-group">
+      <div class="col-xs-4">
+        <label for="">Persona A</label>
+        <input class="form-control" type="number" placeholder="1000-2999" ng-model="personA.id">
+      </div>
+      <div class="col-xs-4">
+        <label for="">Persona B</label>
+        <input class="form-control" type="number" placeholder="1000-2999" ng-model="personB.id">
+      </div>
+      <div class="col-xs-4">
+        <button class="btn btn-primary" type="button" ng-click="ValidateGroup([personA,personB])">Crear Grupo</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4">
+        <label for="">Entrada</label>
+        <div ng-repeat="item in listGroup track by $index">
+          {{item[0].id}} - {{item[1].id}}
+        </div>        
+      </div>
+      <div class="col-xs-4">
+        <label for="">Accion</label>
+        <div ng-show="listGroup.length > 0">
+          <button type="button"  class="btn btn-success" ng-click="GetPersonTravel(listGroup)">Procesar</button>          
+        </div>        
+      </div>
+      <div class="col-xs-4">
+        <label for="">Salida</label>
+        <div ng-repeat="item in res track by $index">
+          {{item}}
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
