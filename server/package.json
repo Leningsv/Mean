@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "4.15.2",
+    "q": "1.5.0"
+  },
+  "devDependencies": {
+    "less-middleware": "2.2.0"
+  },
+  "engines": {
+    "vscode": "^0.10.0"
+  }  
+}
