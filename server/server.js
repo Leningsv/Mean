@@ -1,23 +1,29 @@
-'use strict';
+//--------------Creacion Servidor--------------//
+//Imports
+var express= require('express');
+// decodifica la información que recibimos de un socket-cliente y lo expone en cada una de las requests mediante request.body. 
+var bodyParser= require('body-parser');
+// methodOverride proveee soporte par el metodo faux HTTP. 
+var methodOverride = require('method-override');
+var lessMiddleware = require('less-middleware');
+var errorhandler = require('errorhandler')
+// get an instance of router
+var router = express.Router();
+var http= require('http');
 
-var express = require('express');
-var http = require('http');
-
-var app = express();
+var app= express();
 
 try {
-  app.set('port', process.env.PORT || 3000);
-  app.use(express.bodyParser({ uploadDir: '/tmp' }));
-  app.use(express.methodOverride());
-
-  app.use(require('less-middleware')(__dirname + '/../client/app'));
+  //Asignacion Puerto
+  app.set('port',process.env.PORT || 3000);
+  app.use(bodyParser.json({ uploadDir: '/tmp' }));
+  app.use(methodOverride('X-HTTP-Method-Override'));
+  app.use(lessMiddleware(__dirname + '/../client/app'));
   app.use('/', express['static'](__dirname + '/../client/app'));
-  app.use(express.errorHandler());
-
-  app.use(app.router);
-}
-catch(error){
-  console.error(error);
+  app.use(errorhandler());
+  app.use('/',router);
+} catch (error) {
+  console.log(error);
 }
 
 http.createServer(app).listen(app.get('port'), function(){
