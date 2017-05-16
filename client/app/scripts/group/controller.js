@@ -43,7 +43,7 @@ angular.module('Group')
     }
   };
   $scope.GetPersonTravel= function(listGroup){
-    $scope.res= new Array();
+    $scope.res= [];
     var resList=[];
     listGroup.forEach(function(element) {    
       var groupNumberA=0;  
